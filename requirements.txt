@@ -1,5 +1,7 @@
 streamlit
 cvzone
-opencv-python
+opencv-python-headless
 numpy
 mediapipe
+google-generativeai
+
