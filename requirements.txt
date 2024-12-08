@@ -3,3 +3,5 @@ cvzone
 opencv-python-headless
 numpy
 mediapipe
+google-generativeai
+
