@@ -32,8 +32,6 @@ detector = HandDetector(staticMode=False, maxHands=1, modelComplexity=1, detecti
 def getHandInfo(img):
     # Find hands in the current frame
     # The 'draw' parameter draws landmarks and hand outlines on the image if set to True
-    if img is None:
-        return None
     # The 'flipType' parameter flips the image, making it easier for some detections
     hands, img = detector.findHands(img, draw=False, flipType=True)
 
@@ -68,7 +66,7 @@ def sendToAI(model, canvas, fingers):
         pil_image = Image.fromarray(canvas)
         response = model.generate_content(["Solve this math problem", pil_image])
         return response.text
-    return None
+
 
 prev_pos = None
 canvas = None
@@ -79,9 +77,6 @@ while True:
     # Capture each frame from the webcam
     # 'success' will be True if the frame is successfully captured, 'img' will contain the frame
     success, img = cap.read()
-    if not success:
-        st.error("Failed to capture image from webcam.")
-        break
     img = cv2.flip(img, 1)
 
     if canvas is None:
@@ -105,4 +100,4 @@ while True:
     # cv2.imshow("image_combined", image_combined)
 
     # Keep the window open and update it for each frame; wait for 1 millisecond between frames
-    cv2.waitKey(1)
+    #cv2.waitKey(1)
